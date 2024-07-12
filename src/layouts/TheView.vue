@@ -4,7 +4,7 @@
    /about -> About.vue
 -->
     <main>
-        <div class="container">
+        <div class="container mt-4">
             <!-- Content here -->
             <RouterView />
         </div>
