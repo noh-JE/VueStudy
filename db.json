@@ -1,19 +1,15 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": null,
-      "author": "typicode",
-      "content": null
-    },
-    {
       "title": "11",
       "content": "11!!",
+      "createdAt": 1721018857389,
       "id": 2
     },
     {
       "title": "postForm@@",
       "content": "postForm component@@",
+      "createdAt": 1721018857388,
       "id": 3
     },
     {

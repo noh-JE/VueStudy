@@ -14,8 +14,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from "vue-router";
-import AppCard from "@/components/AppCard.vue";
-import AppGrid from "@/components/AppGrid.vue";
 
 const items = ref(['사과', '포도', '바나나'])
 const router = useRouter()

@@ -3,13 +3,17 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router/index.js'
-import funcPlugins from "@/plugins/func.js";
-import objPlugins from "@/plugins/obj.js";
+// import focus from "@/directives/focus.js";
+// import globalComponents from "@/plugins/global-components.js";
+// import globalDirectives from "@/plugins/global-directives.js";
+import dayjs from "@/plugins/dayjs.js";
 
 const app = createApp(App)
-app.use(funcPlugins)
-app.use(objPlugins, {name: '짐코딩'})
 app.use(router)
+// app.use(globalComponents)
+// app.use(globalDirectives)
+app.use(dayjs)
+// app.directive('focus', focus)
 app.mount('#app')
 
 import 'bootstrap/dist/js/bootstrap.js'
