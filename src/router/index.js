@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import HomeView from "@/views/HomeView.vue"
 import AboutView from "@/views/AboutView.vue"
 import PostCreateView from "@/views/posts/PostCreateView.vue";
@@ -35,7 +35,11 @@ const routes = [
     {
         path: '/posts/:id', //: 동적 라우팅
         name: 'PostDetail',
-        component: PostDetailView
+        component: PostDetailView,
+        props: true
+        // props: (route) => ({
+        //     id: parseInt(route.params.id)
+        // })
     },
     {
         path: '/posts/:id/edit',
@@ -73,6 +77,8 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory('/'),
+    // history: createWebHashHistory(),
+
     routes
 })
 

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h2>{{ form.title }}</h2>
-        <p>{{ form.content }}</p>
-        <p class="text-muted">{{ form.createdAt }}</p>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p class="text-muted">{{ post.createdAt }}</p>
         <hr class="my-4">
         <div class="row g-2">
             <div class="col-auto">
@@ -19,7 +19,7 @@
                 <button class="btn btn-outline-primary" @click="goEditPage">수정</button>
             </div>
             <div class="col-auto">
-                <button class="btn btn-outline-danger">삭제</button>
+                <button class="btn btn-outline-danger" @click="remove">삭제</button>
             </div>
         </div>
     </div>
@@ -27,23 +27,62 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { getPostById } from "@/api/posts.js";
+import { useRouter } from "vue-router";
+import { getPostById, deletePost } from "@/api/posts.js";
 
-const route = useRoute()
+const props = defineProps({
+  id: [String, Number]
+})
+
 const router = useRouter()
-const id = route.params.id
-const form = ref({})
+// const route = useRoute()
+// const id = route.params.id
+
+/*
+* ref
+* 장) 객체 할당 가능, 일관성 유지
+* 단) form.value.title, form.value.content
+*
+* reactive
+* 단) 객체 할당 불가능
+* 장) form.title, form.content
+* */
+const post = ref({})
+// const from = reactive({})
+
 //reactive
 
-const fetchPost = () => {
-    const data = getPostById(id)
-    form.value = { ...data }
+const fetchPost = async () => {
+  try {
+    const { data } = await getPostById(props.id)
+    setPost(data)
+  } catch(error) {
+    console.error(error);
+  }
 }
+
+const setPost = ( { title, content, createdAt }) => {
+  post.value.title = title
+  post.value.content = content
+  post.value.createdAt = createdAt
+}
+
 fetchPost()
 
+const remove = async () => {
+  try {
+    if(confirm('삭제를 원합니까?') === false) {
+      return
+    }
+    await deletePost(props.id)
+    goListPage()
+  } catch(error) {
+    console.error(error)
+  }
+}
+
 const goListPage = () => router.push({ name: 'PostList' })
-const goEditPage = () => router.push({ name: 'PostEdit', params: { id } })
+const goEditPage = () => router.push({ name: 'PostEdit', params: { id: props.id } })
 </script>
 
 <style scoped lang="scss">

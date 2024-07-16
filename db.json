@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": null,
+      "author": "typicode",
+      "content": null
+    },
+    {
+      "title": "11",
+      "content": "11!!",
+      "id": 2
+    },
+    {
+      "title": "postForm@@",
+      "content": "postForm component@@",
+      "id": 3
+    },
+    {
+      "title": "555@@",
+      "content": "555@@",
+      "createdAt": 1721018857387,
+      "id": 4
+    },
+    {
+      "title": "11",
+      "content": "11",
+      "createdAt": 1721020779976,
+      "id": 5
+    },
+    {
+      "title": "dd",
+      "content": "dd",
+      "createdAt": 1721020791472,
+      "id": 6
+    },
+    {
+      "title": "@!@",
+      "content": "@@",
+      "createdAt": 1721020833746,
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
